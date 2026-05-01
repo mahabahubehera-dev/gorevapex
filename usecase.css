@@ -1,0 +1,80 @@
+/* Usecase preview chat panel */
+.usecase-preview {
+  background: #0B141A;
+  border-radius: 20px;
+  padding: 16px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(44,102,245,0.06), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(37,211,102,0.04), transparent 40%);
+}
+.usecase-preview__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 4px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 16px;
+}
+.usecase-preview__avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0F1E3A, #2C66F5);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.usecase-preview__name {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+.usecase-preview__status {
+  color: var(--wa-green);
+  font-size: 11px;
+}
+.usecase-preview__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.usecase-preview__bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.45;
+  animation: bubbleIn 400ms var(--ease-out) both;
+}
+.usecase-preview__bubble--in {
+  background: #1F2C33;
+  color: white;
+  align-self: flex-start;
+  border-top-left-radius: 4px;
+}
+.usecase-preview__bubble--out {
+  background: #005C4B;
+  color: white;
+  align-self: flex-end;
+  border-top-right-radius: 4px;
+}
+.usecase-preview__cta {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.1);
+  color: #53BDEB;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+.usecase-preview__cta:hover { background: rgba(83,189,235,0.2); }

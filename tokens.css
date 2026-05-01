@@ -1,0 +1,307 @@
+/* =========================================================
+   RevApex AI — Core Design Tokens
+   Colors, type, spacing, radii, shadows, motion.
+   Source of truth for both tokens and semantic styles.
+   ========================================================= */
+
+/* -------- Web fonts (Google Fonts substitution) --------
+   Official fonts not provided — using Outfit (display) + Inter (body),
+   matching the codebase. Flag to user: replace if a licensed brand
+   font exists. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------- BRAND COLORS (official) ---------- */
+  --brand-navy:        #0F1E3A;   /* Primary — logo, dark surfaces, heads */
+  --brand-navy-900:    #081025;   /* Pressed / deepest surface */
+  --brand-navy-800:    #0B1730;
+  --brand-navy-700:    #142851;
+  --brand-navy-600:    #1D3570;
+
+  --brand-blue:        #2C66F5;   /* Accent — "AI", primary CTA, links */
+  --brand-blue-600:    #1E52D9;   /* Hover */
+  --brand-blue-700:    #1742B5;   /* Pressed */
+  --brand-blue-100:    #E2EBFE;   /* Tint backgrounds */
+  --brand-blue-50:     #F0F5FF;   /* Very light tint */
+
+  /* ---------- NEUTRALS (official) ---------- */
+  --ink:               #1A1A1A;   /* Dark text */
+  --surface:           #FFFFFF;   /* Card / container */
+  --bg:                #F7F9FC;   /* Light background */
+  --line:              #E5EAF2;   /* Mid gray UI elements / borders */
+  --muted:             #6B7280;   /* Subtle text gray */
+
+  /* Derived neutrals for finer control */
+  --line-strong:       #CBD3E0;
+  --line-soft:         #EEF2F8;
+  --muted-strong:      #4B5563;
+  --muted-soft:        #9CA3AF;
+
+  /* ---------- SEMANTIC COLOR ROLES ---------- */
+  --fg-1:              var(--ink);          /* Primary text */
+  --fg-2:              var(--muted-strong); /* Secondary text */
+  --fg-3:              var(--muted);        /* Tertiary / caption */
+  --fg-inverse:        #FFFFFF;             /* Text on navy/blue */
+  --fg-brand:          var(--brand-navy);   /* Headings on light */
+  --fg-accent:         var(--brand-blue);   /* Links, accent phrases */
+
+  --bg-1:              var(--surface);      /* Page surface */
+  --bg-2:              var(--bg);           /* Page background */
+  --bg-3:              var(--line-soft);    /* Inset panels */
+  --bg-dark:           var(--brand-navy);   /* Dark sections */
+  --bg-dark-2:         var(--brand-navy-900);
+
+  --border:            var(--line);
+  --border-strong:     var(--line-strong);
+  --border-dark:       rgba(255,255,255,0.10);
+  --border-dark-strong: rgba(255,255,255,0.18);
+
+  /* Status */
+  --success:           #0EA472;
+  --warning:           #F59E0B;
+  --danger:            #E0413A;
+  --info:              var(--brand-blue);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-display:      'Outfit', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body:         'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:         'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale (rem based on 16px root) */
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-14: 0.875rem;
+  --fs-15: 0.9375rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-28: 1.75rem;
+  --fs-32: 2rem;
+  --fs-40: 2.5rem;
+  --fs-48: 3rem;
+  --fs-56: 3.5rem;
+  --fs-64: 4rem;
+  --fs-72: 4.5rem;
+
+  --lh-tight: 1.08;
+  --lh-snug:  1.22;
+  --lh-base:  1.5;
+  --lh-loose: 1.7;
+
+  --ls-tight:   -0.02em;
+  --ls-snug:    -0.01em;
+  --ls-normal:  0;
+  --ls-wide:    0.04em;
+  --ls-wider:   0.12em;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold:    700;
+  --fw-extra:   800;
+
+  /* ---------- SPACING SCALE (4px base) ---------- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ---------- RADII ---------- */
+  --r-xs:  4px;
+  --r-sm:  8px;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  20px;
+  --r-2xl: 28px;
+  --r-pill: 999px;
+
+  /* ---------- ELEVATION / SHADOWS ---------- */
+  /* Light-theme shadows are soft, cool-tinted toward navy */
+  --shadow-xs: 0 1px 2px rgba(15, 30, 58, 0.06);
+  --shadow-sm: 0 2px 6px rgba(15, 30, 58, 0.06), 0 1px 2px rgba(15,30,58,0.04);
+  --shadow-md: 0 6px 20px rgba(15, 30, 58, 0.08), 0 2px 6px rgba(15,30,58,0.04);
+  --shadow-lg: 0 16px 40px rgba(15, 30, 58, 0.10), 0 4px 12px rgba(15,30,58,0.06);
+  --shadow-xl: 0 28px 64px rgba(15, 30, 58, 0.14), 0 8px 20px rgba(15,30,58,0.08);
+  --shadow-focus: 0 0 0 4px rgba(44, 102, 245, 0.18);
+  --shadow-accent: 0 10px 30px rgba(44, 102, 245, 0.22);
+
+  /* ---------- MOTION ---------- */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:   150ms;
+  --dur-base:   240ms;
+  --dur-slow:   400ms;
+
+  /* ---------- LAYOUT ---------- */
+  --container-max: 1240px;
+  --nav-height: 72px;
+}
+
+/* ---------- DARK SURFACE OVERRIDES ----------
+   Add `.on-dark` (or use inside `.surface-dark`) to flip fg/border. */
+.on-dark, .surface-dark {
+  --fg-1: #FFFFFF;
+  --fg-2: rgba(255,255,255,0.72);
+  --fg-3: rgba(255,255,255,0.52);
+  --fg-brand: #FFFFFF;
+  --fg-accent: #7DA2FB;
+  --border: rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.18);
+  color: var(--fg-1);
+}
+
+.surface-dark {
+  background: var(--brand-navy);
+}
+
+/* =========================================================
+   SEMANTIC ELEMENT STYLES
+   Use these classes OR the raw tokens directly.
+   ========================================================= */
+
+/* ---------- Headings ---------- */
+.display-1, .h-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extra);
+  font-size: clamp(var(--fs-48), 6vw, var(--fs-72));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-brand);
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-40), 4.5vw, var(--fs-56));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-brand);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-32), 3.5vw, var(--fs-48));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-snug);
+  color: var(--fg-brand);
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-28);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-snug);
+  color: var(--fg-brand);
+}
+
+.h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-20);
+  line-height: var(--lh-snug);
+  color: var(--fg-brand);
+}
+
+.h5 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-16);
+  line-height: var(--lh-snug);
+  color: var(--fg-brand);
+}
+
+/* ---------- Body ---------- */
+.p, .body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-16);
+  line-height: var(--lh-loose);
+  color: var(--fg-2);
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: var(--fs-18);
+  line-height: var(--lh-loose);
+  color: var(--fg-2);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-size: var(--fs-14);
+  line-height: var(--lh-base);
+  color: var(--fg-2);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-12);
+  line-height: var(--lh-base);
+  color: var(--fg-3);
+}
+
+/* ---------- Utility: Eyebrow / Tag ---------- */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-12);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+
+.eyebrow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-12);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  background: var(--brand-blue-100);
+}
+
+/* ---------- Links ---------- */
+.link, a.link {
+  color: var(--fg-accent);
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.link:hover { color: var(--brand-blue-600); }
+
+/* ---------- Code / Mono ---------- */
+.code, code.code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--bg-3);
+  color: var(--brand-navy);
+  padding: 2px 6px;
+  border-radius: var(--r-xs);
+  border: 1px solid var(--line);
+}
+
+/* ---------- Accent phrase highlight (brand mark) ----------
+   Mirrors the "AI" treatment in the logo. */
+.accent-phrase {
+  color: var(--brand-blue);
+  font-weight: inherit;
+}
