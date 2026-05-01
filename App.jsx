@@ -50,7 +50,7 @@ function Nav() {
       <div className="container nav__inner">
         <a href="#" className="nav__brand">
           <span className="nav__brand-mark">
-            <img src="assets/RevApex_Transparent_only_icon_logo.png" alt="RevApex" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
+            <img src="assets/logo-white.png" alt="RevApex" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
           </span>
           <span>RevApex<span className="ai">AI</span></span>
         </a>
@@ -713,7 +713,7 @@ function Footer() {
           <div>
             <div className="footer__brand">
               <span className="nav__brand-mark" style={{width:32, height:32}}>
-                <img src="assets/RevApex_Transparent_only_icon_logo.png" alt="RevApex" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
+                <img src="assets/logo-white.png" alt="RevApex" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
               </span>
               <span>RevApex<span className="ai">AI</span></span>
             </div>
