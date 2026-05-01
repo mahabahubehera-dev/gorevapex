@@ -320,6 +320,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--brand-navy);
   padding: 0 0 80px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
 }
 .marquee__label {
   text-align: center;
@@ -335,10 +336,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   gap: 64px;
   align-items: center;
-  justify-content: center;
   flex-wrap: nowrap;
   opacity: 0.7;
-  overflow-x: auto;
+  width: 100%;
+  animation: scrollLogos 40s linear infinite;
 }
 .marquee__logo {
   font-family: var(--font-display);
@@ -588,6 +589,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(44,102,245,0.5); }
   50% { box-shadow: 0 0 0 16px rgba(44,102,245,0); }
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ============== HOW IT WORKS ============== */

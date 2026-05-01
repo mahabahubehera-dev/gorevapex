@@ -129,7 +129,7 @@ function Marquee() {
       <div className="container">
         <div className="marquee__label">Trusted by 800+ growth-stage businesses across India & SEA</div>
         <div className="marquee__track">
-          {logos.map(l => <div className="marquee__logo" key={l}>{l}</div>)}
+          {[...logos, ...logos].map((l, i) => <div className="marquee__logo" key={i}>{l}</div>)}
         </div>
       </div>
     </div>
