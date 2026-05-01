@@ -193,7 +193,9 @@ function Arrow() {
     <div className="solution-arrow" id="solution">
       <div className="solution-arrow__line"></div>
       <div className="solution-arrow__icon">
-        <Icon name="arrow" size={22}/>
+        <span style={{display:'inline-flex', transform:'rotate(90deg)'}}>
+          <Icon name="arrow" size={22}/>
+        </span>
       </div>
     </div>
   );
