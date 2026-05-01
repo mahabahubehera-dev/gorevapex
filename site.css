@@ -167,7 +167,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative;
   background: var(--brand-navy);
   color: white;
-  padding: 160px 0 100px;
+  padding: 160px 0 40px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -320,6 +320,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--brand-navy);
   padding: 0 0 80px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
 }
 .marquee__label {
   text-align: center;
@@ -328,15 +329,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   text-transform: uppercase;
   color: rgba(255,255,255,0.45);
   margin-bottom: 28px;
+  padding-top: 35px;
   font-weight: 600;
 }
 .marquee__track {
   display: flex;
   gap: 64px;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   opacity: 0.7;
+  width: 100%;
+  animation: scrollLogos 40s linear infinite;
 }
 .marquee__logo {
   font-family: var(--font-display);
@@ -566,7 +569,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  padding: 80px 0 0;
+  padding: 0;
   background: var(--bg);
 }
 .solution-arrow__line {
@@ -586,6 +589,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(44,102,245,0.5); }
   50% { box-shadow: 0 0 0 16px rgba(44,102,245,0); }
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ============== HOW IT WORKS ============== */
