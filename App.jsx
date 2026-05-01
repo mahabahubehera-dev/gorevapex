@@ -581,7 +581,7 @@ function Testimonials() {
 function Pricing() {
   const tiers = [
     {
-      name: "Starter", price: "4,999", note: "/mo",
+      name: "Starter", price: "1,500", note: "/mo",
       feat: [
         "Up to 1,000 conversations/mo",
         "1 WhatsApp Business number",
@@ -592,7 +592,7 @@ function Pricing() {
       cta: "Start free trial", featured: false,
     },
     {
-      name: "Growth", price: "14,999", note: "/mo",
+      name: "Growth", price: "2,500", note: "/mo",
       feat: [
         "Up to 10,000 conversations/mo",
         "3 WhatsApp numbers",
