@@ -63,7 +63,7 @@ function Nav() {
         </div>
         <div className="nav__cta">
           <a href="#" className="nav__cta-secondary">Sign in</a>
-          <a href="#cta" className="btn btn-primary btn-sm">Book free demo <Icon name="arrow" size={16}/></a>
+          <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Book free demo <Icon name="arrow" size={16}/></a>
           <button className="nav__hamburger" aria-label="Menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
           </button>
@@ -102,7 +102,7 @@ function Hero() {
           </p>
 
           <div className="hero__ctas">
-            <a href="#cta" className="btn btn-primary">Book a free demo <Icon name="arrow" size={16}/></a>
+            <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a free demo <Icon name="arrow" size={16}/></a>
             <a href="#solution" className="btn btn-ghost-light">▶ &nbsp; Watch RevBot live</a>
           </div>
 
@@ -635,7 +635,7 @@ function Pricing() {
               <ul className="pricing__feat">
                 {t.feat.map((f, j) => <li key={j}><Icon name="check" size={16}/> <span>{f}</span></li>)}
               </ul>
-              <a href="#cta" className={`btn ${t.featured ? 'btn-primary' : 'btn-outline-dark'}`} style={{justifyContent:'center'}}>{t.cta}</a>
+              <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className={`btn ${t.featured ? 'btn-primary' : 'btn-outline-dark'}`} style={{justifyContent:'center'}}>{t.cta}</a>
             </div>
           ))}
         </div>
@@ -688,7 +688,7 @@ function CTA() {
         <h2 className="cta__title">Stop losing leads to <br/>slow replies. Start today.</h2>
         <p className="cta__sub">Book a 20-minute demo. We'll show you RevBot live, on your industry, with your FAQs. Live in 48 hours or it's free.</p>
         <div className="cta__ctas">
-          <a href="#" className="btn btn-primary">Book your free demo <Icon name="arrow" size={16}/></a>
+          <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book your free demo <Icon name="arrow" size={16}/></a>
           <a href="#" className="btn btn-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-1-.4-1.8-1-2.6-1.7-.6-.6-1.1-1.2-1.5-1.9-.2-.3 0-.4.1-.5.2-.2.4-.4.5-.6.1-.2.2-.3.2-.5 0-.2-.7-1.6-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.1 3 .1.2 2 3.1 5 4.4 2.5 1 3 .8 3.5.7.5-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg> WhatsApp us now</a>
         </div>
         <div className="cta__trust">
