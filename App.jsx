@@ -52,7 +52,7 @@ function Nav() {
           <span className="nav__brand-mark">
             <img src="assets/white-rev-logo-icon.png" alt="RevApex" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
           </span>
-          <span>RevApex<span className="ai">AI</span></span>
+          <span>Rev<span className="ai">Sathi</span></span>
         </a>
         <div className="nav__links">
           <a href="#solution" className="nav__link">Product</a>
@@ -715,7 +715,7 @@ function Footer() {
               <span className="nav__brand-mark" style={{width:32, height:32}}>
                 <img src="assets/white-rev-logo-icon.png" alt="RevApex" style={{width:'100%',height:'100%',objectFit:'contain'}}/>
               </span>
-              <span>RevApex<span className="ai">AI</span></span>
+              <span>Rev<span className="ai">Sathi</span></span>
             </div>
             <p className="footer__about">The AI WhatsApp agent built to close deals — not just answer tickets. Trusted by 800+ growth-stage businesses across India & SEA.</p>
             <div className="footer__contact">
