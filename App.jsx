@@ -58,7 +58,7 @@ function Nav() {
           <a href="#solution" className="nav__link">Product</a>
           <a href="#features" className="nav__link">Features</a>
           <a href="#usecases" className="nav__link">Use Cases</a>
-          <a href="#pricing" className="nav__link">Pricing</a>
+          <a href="pricing.html" className="nav__link">Pricing</a>
           <a href="#faq" className="nav__link">FAQ</a>
         </div>
         <div className="nav__cta">
@@ -807,7 +807,7 @@ function Footer() {
             <ul>
               <li><a href="#features">Features</a></li>
               <li><a href="#usecases">Use cases</a></li>
-              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
               <li><a href="#">Integrations</a></li>
               <li><a href="#">Changelog</a></li>
             </ul>
