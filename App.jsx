@@ -58,7 +58,7 @@ function Nav() {
           <a href="#solution" className="nav__link">Product</a>
           <a href="#features" className="nav__link">Features</a>
           <a href="#usecases" className="nav__link">Use Cases</a>
-          <a href="#pricing" className="nav__link">Pricing</a>
+          <a href="pricing.html" className="nav__link">Pricing</a>
           <a href="#faq" className="nav__link">FAQ</a>
         </div>
         <div className="nav__cta">
@@ -579,67 +579,145 @@ function Testimonials() {
 
 /* ============== PRICING ============== */
 function Pricing() {
+  const [billing, setBilling] = useState("monthly");
+  const isAnnual = billing === "annual";
   const tiers = [
     {
-      name: "Starter", price: "1,500", note: "/mo",
+      name: "Starter",
+      monthly: 5,
+      summary: "For solo founders and small teams testing WhatsApp automation.",
+      bestFor: "Start capturing every enquiry",
       feat: [
-        "Up to 1,000 conversations/mo",
+        "500 AI conversations/mo",
         "1 WhatsApp Business number",
-        "AI replies + smart handoff",
-        "Basic analytics",
-        "Email support",
+        "Train RevSathi on your FAQs",
+        "Lead capture and instant replies",
+        "Basic inbox handoff",
+        "Weekly conversation summary",
       ],
-      cta: "Start free trial", featured: false,
+      cta: "Start Starter", featured: false,
     },
     {
-      name: "Growth", price: "2,500", note: "/mo",
+      name: "Growth",
+      monthly: 15,
+      summary: "For growing businesses that need higher volume and integrations.",
+      bestFor: "Turn WhatsApp into a sales engine",
       feat: [
-        "Up to 10,000 conversations/mo",
-        "3 WhatsApp numbers",
-        "Multi-language (100+)",
-        "CRM integrations + webhooks",
-        "Advanced analytics & A/B",
-        "Priority support",
+        "3,000 AI conversations/mo",
+        "2 WhatsApp Business numbers",
+        "100+ language support",
+        "CRM and Google Sheets sync",
+        "Cart, demo and appointment flows",
+        "Priority onboarding support",
       ],
-      cta: "Start free trial", featured: true, badge: "Most popular",
+      cta: "Choose Growth", featured: true, badge: "Most popular",
     },
     {
-      name: "Enterprise", price: "Custom", note: "",
+      name: "Scale",
+      monthly: 25,
+      summary: "For teams ready to automate support, sales and repeat campaigns.",
+      bestFor: "Scale conversations without hiring",
       feat: [
-        "Unlimited conversations",
-        "Unlimited numbers & teams",
-        "Dedicated AI training",
-        "SSO, SOC-2, on-prem options",
-        "Custom SLAs & success manager",
-        "24/7 white-glove support",
+        "10,000 AI conversations/mo",
+        "5 WhatsApp Business numbers",
+        "Advanced playbooks by industry",
+        "Broadcast and re-engagement flows",
+        "Team inbox with smart routing",
+        "Advanced analytics and reports",
       ],
-      cta: "Talk to sales", featured: false,
+      cta: "Choose Scale", featured: false,
     },
   ];
+
+  const valuePoints = [
+    { icon: "bolt", title: "Reply in seconds", text: "RevSathi answers common sales and support questions 24/7 so hot leads never cool down." },
+    { icon: "db", title: "Learns your business", text: "Train it on FAQs, policies, catalogs and offers so every reply stays clear and on brand." },
+    { icon: "chart", title: "See what converts", text: "Track conversations, lead sources, handoffs and revenue actions from one simple dashboard." },
+  ];
+
+  const compareRows = [
+    ["AI WhatsApp replies", "Included", "Included", "Included"],
+    ["Business numbers", "1", "2", "5"],
+    ["Monthly conversations", "500", "3,000", "10,000"],
+    ["CRM / Sheets sync", "Basic export", "Included", "Advanced"],
+    ["Industry playbooks", "Core FAQ", "Sales flows", "Full automation"],
+    ["Support", "Email", "Priority", "Priority + setup review"],
+  ];
+
+  const priceFor = (monthly) => {
+    const price = isAnnual ? monthly * 0.85 : monthly;
+    return Number.isInteger(price) ? String(price) : price.toFixed(2);
+  };
+
   return (
     <section className="pricing" id="pricing">
       <div className="container">
-        <div className="section__head">
-          <div className="eyebrow-chip"><Icon name="wallet" size={12}/> Pricing</div>
-          <h2 className="section__title">Pays for itself <span className="accent">in week one.</span></h2>
-          <p className="section__sub">Average customer ROI: 340% in year one. 14-day free trial on every plan, no credit card required.</p>
+        <div className="pricing__hero">
+          <div>
+            <div className="eyebrow-chip"><Icon name="wallet" size={12}/> Pricing</div>
+            <h2 className="section__title">Simple plans for businesses that want <span className="accent">every WhatsApp lead answered.</span></h2>
+            <p className="section__sub">Start small, grow confidently, and let RevSathi handle the repetitive conversations that slow your team down. Annual billing saves 15% automatically.</p>
+          </div>
+
+          <div className="pricing__billing" role="group" aria-label="Billing period">
+            <button className={billing === "monthly" ? "active" : ""} onClick={() => setBilling("monthly")}>Monthly</button>
+            <button className={billing === "annual" ? "active" : ""} onClick={() => setBilling("annual")}>Annual <span>Save 15%</span></button>
+          </div>
         </div>
 
         <div className="pricing__grid">
           {tiers.map((t, i) => (
             <div className={`pricing__card${t.featured?' pricing__card--featured':''}`} key={i}>
               {t.badge && <div className="pricing__badge">{t.badge}</div>}
-              <h3>{t.name}</h3>
-              <div className="pricing__price">
-                {t.price !== "Custom" && <span className="pre">₹</span>}{t.price}
-                {t.note && <span className="suf">{t.note}</span>}
+              <div className="pricing__card-head">
+                <h3>{t.name}</h3>
+                <p>{t.summary}</p>
               </div>
+              <div className="pricing__price">
+                <span className="pre">$</span>{priceFor(t.monthly)}
+                <span className="suf">/mo</span>
+              </div>
+              {isAnnual && <div className="pricing__annual-note">Billed annually at ${(t.monthly * 12 * 0.85).toFixed(0)} instead of ${t.monthly * 12}</div>}
+              <div className="pricing__best">{t.bestFor}</div>
               <ul className="pricing__feat">
                 {t.feat.map((f, j) => <li key={j}><Icon name="check" size={16}/> <span>{f}</span></li>)}
               </ul>
               <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className={`btn ${t.featured ? 'btn-primary' : 'btn-outline-dark'}`} style={{justifyContent:'center'}}>{t.cta}</a>
             </div>
           ))}
+        </div>
+
+        <div className="pricing__value">
+          {valuePoints.map((item) => (
+            <div className="pricing__value-item" key={item.title}>
+              <div className="pricing__value-icon"><Icon name={item.icon} size={20}/></div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="pricing__compare">
+          <div className="pricing__compare-head">
+            <div>
+              <div className="eyebrow-chip"><Icon name="check" size={12}/> Compare plans</div>
+              <h3>Clear limits. No confusing add-ons.</h3>
+            </div>
+            <p>Every plan includes RevSathi AI setup, WhatsApp-ready workflows and a human handoff path.</p>
+          </div>
+          <div className="pricing__table" role="table" aria-label="Pricing plan comparison">
+            <div className="pricing__row pricing__row--head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Starter</div>
+              <div role="columnheader">Growth</div>
+              <div role="columnheader">Scale</div>
+            </div>
+            {compareRows.map((row) => (
+              <div className="pricing__row" role="row" key={row[0]}>
+                {row.map((cell, index) => <div role="cell" key={index}>{cell}</div>)}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -729,7 +807,7 @@ function Footer() {
             <ul>
               <li><a href="#features">Features</a></li>
               <li><a href="#usecases">Use cases</a></li>
-              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
               <li><a href="#">Integrations</a></li>
               <li><a href="#">Changelog</a></li>
             </ul>
