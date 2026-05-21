@@ -234,6 +234,14 @@
 .rp-billing button.active span {
   color: #8EF0B6;
 }
+.rp-toggle-stack {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+.rp-toggle-stack .rp-billing:first-child button {
+  min-width: 84px;
+}
 
 .rp-plan-grid {
   display: grid;
@@ -529,6 +537,10 @@
   }
   .rp-billing {
     width: 100%;
+  }
+  .rp-toggle-stack {
+    width: 100%;
+    justify-items: stretch;
   }
   .rp-billing button {
     flex: 1;

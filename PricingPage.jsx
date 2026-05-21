@@ -82,7 +82,7 @@ const featureHelp = {
 const plans = [
   {
     name: "Starter",
-    price: 5,
+    price: { usd: 5, inr: 499 },
     badge: "Best to start",
     contacts: "500 Contacts",
     highlight: "For small teams launching official WhatsApp automation with AI and broadcasts.",
@@ -99,7 +99,7 @@ const plans = [
   },
   {
     name: "Growth",
-    price: 15,
+    price: { usd: 15, inr: 1499 },
     badge: "Most popular",
     contacts: "5,000 Contacts",
     highlight: "For growing businesses that need more contacts, appointment flows, AI routing, and support.",
@@ -113,7 +113,7 @@ const plans = [
   },
   {
     name: "Scale",
-    price: 25,
+    price: { usd: 25, inr: 2499 },
     badge: "High volume",
     contacts: "10,000 Contacts",
     highlight: "For teams scaling campaigns, automations, inbox operations, and AI-led conversion.",
@@ -164,10 +164,22 @@ function PricingNav() {
   );
 }
 
-function PlanCard({ plan, billing }) {
+function PlanCard({ plan, billing, currency }) {
   const annual = billing === "annual";
-  const monthlyPrice = plan.price == null ? null : plan.price * (annual ? 0.85 : 1);
-  const annualTotal = plan.price == null ? null : plan.price * 12 * 0.85;
+  const basePrice = plan.price == null ? null : plan.price[currency];
+  const monthlyPrice = basePrice == null ? null : basePrice * (annual ? 0.85 : 1);
+  const annualTotal = basePrice == null ? null : basePrice * 12 * 0.85;
+  const money = {
+    usd: { symbol: "$", code: "USD", decimals: 2 },
+    inr: { symbol: "₹", code: "INR", decimals: 0 },
+  }[currency];
+  const formatPrice = (value) => {
+    if (value == null) return "";
+    return value.toLocaleString("en-US", {
+      minimumFractionDigits: value % 1 ? money.decimals : 0,
+      maximumFractionDigits: money.decimals,
+    });
+  };
 
   return (
     <article className={`rp-plan${plan.featured ? " rp-plan--featured" : ""}`}>
@@ -183,11 +195,11 @@ function PlanCard({ plan, billing }) {
         {monthlyPrice == null ? (
           <><span className="rp-plan__custom">Custom</span><span> /mo</span></>
         ) : (
-          <><span>$</span>{monthlyPrice.toFixed(monthlyPrice % 1 ? 2 : 0)}<span> /mo</span></>
+          <><span>{money.symbol}</span>{formatPrice(monthlyPrice)}<span> /mo</span></>
         )}
       </div>
       <div className="rp-plan__note">
-        {annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at $${annualTotal.toFixed(0)}. You save 15%.` : "Monthly billing. Switch to annual to save 15%."}
+        {annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at ${money.symbol}${formatPrice(annualTotal)} ${money.code}. You save 15%.` : `Monthly billing in ${money.code}. Switch to annual to save 15%.`}
       </div>
       <a href="https://www.app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? "btn-primary" : "btn-outline-dark"}`}>Get Started <PriceIcon name="arrow" size={16}/></a>
       <div className="rp-plan__features">
@@ -204,6 +216,7 @@ function PlanCard({ plan, billing }) {
 
 function PricingPage() {
   const [billing, setBilling] = useState("monthly");
+  const [currency, setCurrency] = useState("usd");
   const categories = [
     { icon: "wallet", title: "Zero markup promise", text: "RevSathi keeps platform pricing transparent. You pay your plan plus official WhatsApp costs, without hidden conversation commission." },
     { icon: "bot", title: "AI that works inside WhatsApp", text: "Use AI for replies, lead qualification, intent detection, translations, handoff summaries, and follow-up sequences." },
@@ -270,13 +283,19 @@ function PricingPage() {
                 <h2>Pick the plan that matches your contact volume.</h2>
                 <p>All paid plans include the core RevSathi platform: official WhatsApp automation, inbox, broadcasts, templates, chatbot builder, AI workflows, and integrations.</p>
               </div>
-              <div className="rp-billing" role="group" aria-label="Billing period">
-                <button className={billing === "monthly" ? "active" : ""} onClick={() => setBilling("monthly")}>Monthly</button>
-                <button className={billing === "annual" ? "active" : ""} onClick={() => setBilling("annual")}>Annual <span>Save 15%</span></button>
+              <div className="rp-toggle-stack">
+                <div className="rp-billing" role="group" aria-label="Currency">
+                  <button className={currency === "usd" ? "active" : ""} onClick={() => setCurrency("usd")}>USD</button>
+                  <button className={currency === "inr" ? "active" : ""} onClick={() => setCurrency("inr")}>INR</button>
+                </div>
+                <div className="rp-billing" role="group" aria-label="Billing period">
+                  <button className={billing === "monthly" ? "active" : ""} onClick={() => setBilling("monthly")}>Monthly</button>
+                  <button className={billing === "annual" ? "active" : ""} onClick={() => setBilling("annual")}>Annual <span>Save 15%</span></button>
+                </div>
               </div>
             </div>
             <div className="rp-plan-grid">
-              {plans.map((plan) => <PlanCard key={plan.name} plan={plan} billing={billing}/>)}
+              {plans.map((plan) => <PlanCard key={plan.name} plan={plan} billing={billing} currency={currency}/>)}
             </div>
           </div>
         </section>
