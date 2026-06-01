@@ -157,7 +157,7 @@ function PricingNav() {
         </div>
         <div className="nav__cta">
           <a href="https://app.revsathi.com/auth" target="_blank" rel="noopener noreferrer" className="nav__cta-secondary">Sign in</a>
-          <a href="https://www.app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Start for FREE <PriceIcon name="arrow" size={16}/></a>
+          <a href="https://app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Start for FREE <PriceIcon name="arrow" size={16}/></a>
         </div>
       </div>
     </nav>
@@ -201,7 +201,7 @@ function PlanCard({ plan, billing, currency }) {
       <div className="rp-plan__note">
         {annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at ${money.symbol}${formatPrice(annualTotal)} ${money.code}. You save 15%.` : `Monthly billing in ${money.code}. Switch to annual to save 15%.`}
       </div>
-      <a href="https://www.app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? "btn-primary" : "btn-outline-dark"}`}>Get Started <PriceIcon name="arrow" size={16}/></a>
+      <a href="https://app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? "btn-primary" : "btn-outline-dark"}`}>Get Started <PriceIcon name="arrow" size={16}/></a>
       <div className="rp-plan__features">
         {plan.features.map((feature) => (
           <details key={feature} className="rp-feature">
@@ -334,7 +334,7 @@ function PricingPage() {
               <h2>Launch WhatsApp AI automation without hidden fees or confusing add-ons.</h2>
               <p>RevSathi gives your team one place for AI replies, campaigns, templates, shared inbox work, follow-ups, integrations, and reporting.</p>
             </div>
-            <a href="https://www.app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Start for FREE <PriceIcon name="arrow" size={16}/></a>
+            <a href="https://app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Start for FREE <PriceIcon name="arrow" size={16}/></a>
           </div>
         </section>
       </main>
