@@ -63,7 +63,7 @@ function Nav() {
         </div>
         <div className="nav__cta">
           <a href="https://app.revsathi.com/auth" target="_blank" rel="noopener noreferrer" className="nav__cta-secondary">Sign in</a>
-          <a href="https://www.app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Start for FREE <Icon name="arrow" size={16}/></a>
+          <a href="https://app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Start for FREE <Icon name="arrow" size={16}/></a>
           <button className="nav__hamburger" aria-label="Menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
           </button>
