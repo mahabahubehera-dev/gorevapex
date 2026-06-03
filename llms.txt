@@ -1,0 +1,31 @@
+# RevApex AI (revsathi.com)
+
+> RevApex AI builds RevBot, an AI-powered WhatsApp agent that captures leads, answers customer queries, and drives revenue 24/7 for D2C brands, ecommerce businesses, and growth-stage companies. RevBot is built for the Official WhatsApp Business API, supports 100+ languages, and can go live in 48 hours.
+
+## Product
+
+- [Homepage](https://revsathi.com/): RevBot overview, AI WhatsApp agent value proposition, setup timeline, supported use cases, and conversion benefits.
+- [Product](https://revsathi.com/#solution): How RevBot works as an always-on WhatsApp sales and support agent.
+- [Features](https://revsathi.com/#features): Core capabilities including 24/7 response, multilingual support, lead qualification, CRM sync, and customer support automation.
+- [How it works](https://revsathi.com/#how): Setup process for launching on the Official WhatsApp Business API.
+- [Pricing](https://revsathi.com/pricing.html): RevSathi plans for WhatsApp AI automation, shared inbox, broadcasts, chatbot builder, integrations, and automation.
+
+## Use cases
+
+- [D2C and ecommerce](https://revsathi.com/#usecases): Product queries, abandoned cart recovery, upsells, and order-related WhatsApp conversations.
+- [Lead generation](https://revsathi.com/#usecases): Qualify inbound leads, route prospects to sales, and follow up automatically.
+- [Customer support](https://revsathi.com/#usecases): Resolve FAQs, escalate complex queries, and reduce repetitive support work.
+
+## Key facts
+
+- Product name: RevBot
+- Built by: RevApex AI LLC
+- WhatsApp API: Official WhatsApp Business API
+- Languages supported: 100+
+- Setup time: Live in 48 hours
+- Primary markets: India, Southeast Asia, global D2C and ecommerce brands
+- Core value proposition: Replace manual WhatsApp follow-up with an always-on AI agent that qualifies leads, answers queries, and helps close revenue.
+
+## AI crawler permissions
+
+GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Google-Extended, and Bingbot are welcome to crawl and index all public content on revsathi.com for AI search, retrieval, and citation purposes.
