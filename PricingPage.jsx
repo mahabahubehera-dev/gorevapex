@@ -29,6 +29,7 @@ const featureHelp = {
   "500 Contacts": "Store and engage up to 500 active contacts in your RevSathi workspace.",
   "5,000 Contacts": "A larger contact limit for growing campaigns, lead nurture, and repeat customer messaging.",
   "10,000 Contacts": "Scale your WhatsApp database while keeping campaigns, inboxes, and automation organized.",
+  "Unlimited Contacts": "Keep growing your contact database without a fixed plan-level contact cap.",
   "15,000 Contacts": "Designed for high-volume teams that need more subscriber capacity and operational support.",
   "2 Team Members": "Invite two users to manage chats, assign conversations, and collaborate from one shared inbox.",
   "5 Team Members": "Give sales, support, and operations room to work together without sharing one login.",
@@ -49,6 +50,15 @@ const featureHelp = {
   "Interactive User Input Collection Bot": "Collect clean customer details step by step inside WhatsApp so your team can follow up with better context.",
   "Messaging Template Management": "Create, organize, and send approved WhatsApp templates from one place.",
   "WhatsApp Chat Widget": "Add a website widget that opens WhatsApp conversations and routes them into your RevSathi inbox.",
+  "Knowledge Base Access": "Train RevSathi on your business content so the AI can answer with more accurate context.",
+  "5 Contact Custom Fields": "Add up to 5 custom contact fields for segmentation, context, and CRM-style tracking.",
+  "10 Contact Custom Fields": "Add up to 10 custom contact fields for richer segmentation and team workflows.",
+  "Unlimited Contact Custom Fields": "Create as many contact fields as your operations need for advanced segmentation.",
+  "60 Campaigns Per Month": "Run up to 60 WhatsApp campaigns per month from this workspace.",
+  "150 Campaigns Per Month": "Run up to 150 WhatsApp campaigns per month for higher-volume outreach.",
+  "Unlimited Campaigns Per Month": "Run campaigns without a fixed monthly campaign count limit.",
+  "24x5 Email Support": "Get email support during business days for setup, billing, and operational questions.",
+  "24x7 Email & Chat Support": "Get round-the-clock support through email and chat for plan and platform questions.",
   "Includes all Starter features": "Everything in Starter is included before adding growth-level limits and automation.",
   "Includes all Growth features": "Everything in Growth is included, plus higher capacity, team access, and support.",
   "Omnichannel Inbox: WhatsApp": "Manage WhatsApp conversations from one operational inbox built for teams.",
@@ -61,7 +71,6 @@ const featureHelp = {
   "Webhook Access for Integrations": "Connect RevSathi with external systems through webhook access for custom workflows and real-time updates.",
   "Custom Webhook Listener": "Receive JSON payloads from your apps and trigger WhatsApp messages or automation from them.",
   "Remove \"Powered by RevSathi\"": "Keep the experience white-label so your brand remains the focus for customers.",
-  "On-Call Support": "Get live support for important setup, campaign, or operational issues.",
   "More WhatsApp Numbers": "Add more WhatsApp numbers for departments, regions, brands, or high-volume operations.",
   "High Volume Subscribers": "Support larger subscriber operations and higher campaign volume with guided configuration.",
   "Dedicated Account Manager": "Work with a RevSathi specialist who understands your use case, rollout, and success metrics.",
@@ -80,10 +89,10 @@ const plans = [
     featured: false,
     features: [
       "0% Markup Fees", "500 Contacts", "2 Team Members", "Number Coexistence", "WhatsApp AI Agent",
-      "50,000 AI Message Tokens", "Unlimited Message Credits", "Unlimited Free Incoming Conversation",
-      "Unlimited Chatbot Sessions", "Bulk WhatsApp Messaging", "Multi Agent Shared Inbox",
-      "Drag & Drop Chatbot Builder", "Campaign Reporting", "Automated Follow Up Bot",
-      "Interactive User Input Collection Bot", "Messaging Template Management", "WhatsApp Chat Widget",
+      "50,000 AI Message Tokens", "Unlimited Free Incoming Conversation", "Knowledge Base Access",
+      "5 Contact Custom Fields", "60 Campaigns Per Month", "Bulk WhatsApp Messaging", "Multi Agent Shared Inbox",
+      "Campaign Reporting", "Interactive User Input Collection Bot", "Messaging Template Management",
+      "WhatsApp Chat Widget", "24x5 Email Support",
     ],
   },
   {
@@ -95,22 +104,26 @@ const plans = [
     featured: true,
     features: [
       "Includes all Starter features", "5,000 Contacts", "5 Team Members", "Omnichannel Inbox: WhatsApp",
+      "10 Contact Custom Fields", "150 Campaigns Per Month", "Knowledge Base Access",
       "Appointment Booking System", "High Speed Broadcasting", "Unlimited AI Message Tokens",
-      "AI Intent Detection", "Roles and Permissions", "Manager Monitoring", "Incoming Chat Translation",
-      "Webhook Access for Integrations", "Custom Webhook Listener", "Remove \"Powered by RevSathi\"", "On-Call Support",
+      "Unlimited Message Credits", "Unlimited Chatbot Sessions", "Drag & Drop Chatbot Builder",
+      "Automated Follow Up Bot", "AI Intent Detection", "Roles and Permissions", "Manager Monitoring", "Incoming Chat Translation",
+      "Webhook Access for Integrations", "Custom Webhook Listener", "Remove \"Powered by RevSathi\"",
+      "24x7 Email & Chat Support",
     ],
   },
   {
     name: "Scale",
     price: 12999,
     badge: "High volume",
-    contacts: "10,000 Contacts",
+    contacts: "Unlimited Contacts",
     highlight: "For teams scaling campaigns, automations, inbox operations, and AI-led conversion.",
     featured: false,
     features: [
-      "Includes all Growth features", "10,000 Contacts", "10 Team Members", "More WhatsApp Numbers",
+      "Includes all Growth features", "Unlimited Contacts", "10 Team Members", "Unlimited Contact Custom Fields",
+      "Unlimited Campaigns Per Month", "Knowledge Base Access", "More WhatsApp Numbers",
       "Advanced AI Playbooks", "High Speed Broadcasting", "Roles and Permissions", "Manager Monitoring",
-      "Quarterly Automation Review", "Priority Support",
+      "Quarterly Automation Review", "24x7 Email & Chat Support", "Priority Support",
     ],
   },
   {
@@ -121,7 +134,7 @@ const plans = [
     highlight: "For larger teams that need more numbers, higher subscriber volume, and guided success.",
     featured: false,
     features: [
-      "Includes all Growth features", "15,000 Contacts", "20 Team Members", "More WhatsApp Numbers",
+      "Includes all Growth features", "15,000 Contacts", "20 Team Members", "Knowledge Base Access", "More WhatsApp Numbers",
       "High Volume Subscribers", "Dedicated Account Manager", "Priority Support",
     ],
   },
@@ -185,7 +198,8 @@ function PlanCard({ plan, billing }) {
         )}
       </div>
       <div className="rp-plan__note">
-        {annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at ${money.symbol}${formatPrice(annualTotal)} ${money.code}. You save 25%.` : `Monthly billing in ${money.code}. Switch to annual to save 25%.`}
+        <div>{annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at ${money.symbol}${formatPrice(annualTotal)} ${money.code}. You save 25%.` : `Monthly billing in ${money.code}. Switch to annual to save 25%.`}</div>
+        <div>Meta messaging cost extra.</div>
       </div>
       <a href="https://app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? "btn-primary" : "btn-outline-dark"}`}>Get Started <PriceIcon name="arrow" size={16}/></a>
       <div className="rp-plan__features">
@@ -209,13 +223,16 @@ function PricingPage() {
   ];
 
   const comparison = [
-    ["Contact limit", "500", "5,000", "10,000", "15,000"],
+    ["Contact limit", "500", "5,000", "Unlimited", "15,000"],
     ["Team members", "2", "5", "10", "20"],
+    ["Contact custom fields", "5", "10", "Unlimited", "Custom"],
+    ["Campaigns per month", "60", "150", "Unlimited", "Custom"],
+    ["Knowledge base access", "Included", "Included", "Included", "Included"],
     ["AI tokens", "50,000", "Unlimited", "Unlimited", "Custom volume"],
     ["WhatsApp numbers", "1", "1", "Multiple", "More numbers"],
     ["Branding removal", "-", "Included", "Included", "Included"],
     ["Integrations", "-", "Webhook access", "Webhook access", "Webhook access"],
-    ["Support", "Standard", "On-call", "Priority", "Dedicated manager"],
+    ["Support", "24x5 email", "24x7 email & chat", "24x7 email & chat", "Dedicated manager"],
   ];
 
   return (
@@ -227,7 +244,7 @@ function PricingPage() {
             <div className="rp-hero__copy">
               <div className="rp-kicker"><PriceIcon name="shield" size={14}/> Fair, transparent WhatsApp pricing</div>
               <h1>Zero markup fees. Serious WhatsApp automation. Simple RevSathi plans.</h1>
-              <p>Choose the contact limit and team capacity you need today. Every plan is built around official WhatsApp automation, AI conversations, shared inbox workflows, broadcasts, and chatbot flows, with webhook integration access from Growth onward.</p>
+              <p>Choose the contact limit and team capacity you need today. Every plan is built around official WhatsApp automation, AI conversations, shared inbox workflows, broadcasts, and knowledge base access, with advanced chatbot flows and webhook integration access from Growth onward.</p>
               <div className="rp-hero__actions">
                 <a href="#plans" className="btn btn-primary">View Plans <PriceIcon name="arrow" size={16}/></a>
                 <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">Watch Demo</a>
@@ -242,7 +259,7 @@ function PricingPage() {
               <div className="rp-metric-grid">
                 <div><strong>0%</strong><span>Markup fees</span></div>
                 <div><strong>24/7</strong><span>AI replies</span></div>
-                <div><strong>500-15k</strong><span>Contacts</span></div>
+                <div><strong>500+</strong><span>Contacts</span></div>
                 <div><strong>Growth+</strong><span>Webhook access</span></div>
               </div>
             </div>
@@ -267,7 +284,7 @@ function PricingPage() {
               <div>
                 <div className="rp-kicker"><PriceIcon name="layers" size={14}/> Plans</div>
                 <h2>Pick the plan that matches your contact volume.</h2>
-                <p>All paid plans include the core RevSathi platform: official WhatsApp automation, inbox, broadcasts, templates, chatbot builder, and AI workflows. Growth and higher plans add webhook access for integrations.</p>
+                <p>All paid plans include the core RevSathi platform: official WhatsApp automation, inbox, broadcasts, templates, AI workflows, and knowledge base access. Growth and higher plans add advanced chatbot automation and webhook access for integrations.</p>
               </div>
               <div className="rp-toggle-stack">
                 <div className="rp-billing" role="group" aria-label="Billing period">

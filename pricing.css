@@ -353,11 +353,14 @@
   font-size: 38px !important;
 }
 .rp-plan__note {
-  min-height: 42px;
+  min-height: 58px;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
   margin-bottom: 18px;
+}
+.rp-plan__note div + div {
+  margin-top: 4px;
 }
 .rp-plan--featured .rp-plan__note {
   color: rgba(255,255,255,0.68);
