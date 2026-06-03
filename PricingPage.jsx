@@ -46,18 +46,9 @@ const featureHelp = {
   "Drag & Drop Chatbot Builder": "Create no-code flows for FAQs, lead forms, reminders, routing, and follow-up sequences.",
   "Campaign Reporting": "Track sent, delivered, read, failed, replied, and conversion activity for every campaign.",
   "Automated Follow Up Bot": "Automatically nudge leads after delays, missed replies, abandoned carts, or pending appointments.",
-  "Interactive User Input Collection Bot": "Collect clean customer details step by step inside WhatsApp and pass them to sheets, APIs, or your team.",
+  "Interactive User Input Collection Bot": "Collect clean customer details step by step inside WhatsApp so your team can follow up with better context.",
   "Messaging Template Management": "Create, organize, and send approved WhatsApp templates from one place.",
   "WhatsApp Chat Widget": "Add a website widget that opens WhatsApp conversations and routes them into your RevSathi inbox.",
-  "Google Sheets Integration": "Sync leads, responses, and campaign activity into Google Sheets for reporting or operations.",
-  "API Integration (Developer)": "Use developer APIs to connect RevSathi with custom systems, CRMs, and internal tools.",
-  "Outgoing Webhooks": "Push events such as new leads, replies, and status updates to external apps in real time.",
-  "Zapier Integration": "Connect RevSathi to thousands of apps through Zapier workflows.",
-  "Pabbly Integration": "Automate actions with Pabbly Connect for CRM, lead routing, and follow-up tasks.",
-  "Make Integration": "Build visual automation workflows with Make for multi-step business processes.",
-  "N8N Integration": "Use n8n for flexible, technical workflow automation and custom orchestration.",
-  "WooCommerce Integration": "Trigger WhatsApp updates for orders, abandoned carts, customer support, and post-purchase follow-ups.",
-  "Shopify Integration": "Automate commerce conversations such as cart recovery, order updates, and product support.",
   "Includes all Starter features": "Everything in Starter is included before adding growth-level limits and automation.",
   "Includes all Growth features": "Everything in Growth is included, plus higher capacity, team access, and support.",
   "Omnichannel Inbox: WhatsApp": "Manage WhatsApp conversations from one operational inbox built for teams.",
@@ -67,7 +58,7 @@ const featureHelp = {
   "Roles and Permissions": "Control what admins, managers, and agents can see or change inside the workspace.",
   "Manager Monitoring": "Give managers visibility into live chats, agent response quality, and operational performance.",
   "Incoming Chat Translation": "Help agents understand inbound messages across languages so customers can write naturally.",
-  "Webhook Integration": "Connect external systems using webhooks for custom workflows and real-time updates.",
+  "Webhook Access for Integrations": "Connect RevSathi with external systems through webhook access for custom workflows and real-time updates.",
   "Custom Webhook Listener": "Receive JSON payloads from your apps and trigger WhatsApp messages or automation from them.",
   "Remove \"Powered by RevSathi\"": "Keep the experience white-label so your brand remains the focus for customers.",
   "On-Call Support": "Get live support for important setup, campaign, or operational issues.",
@@ -82,7 +73,7 @@ const featureHelp = {
 const plans = [
   {
     name: "Starter",
-    price: { usd: 5, inr: 499 },
+    price: 2199,
     badge: "Best to start",
     contacts: "500 Contacts",
     highlight: "For small teams launching official WhatsApp automation with AI and broadcasts.",
@@ -93,13 +84,11 @@ const plans = [
       "Unlimited Chatbot Sessions", "Bulk WhatsApp Messaging", "Multi Agent Shared Inbox",
       "Drag & Drop Chatbot Builder", "Campaign Reporting", "Automated Follow Up Bot",
       "Interactive User Input Collection Bot", "Messaging Template Management", "WhatsApp Chat Widget",
-      "Google Sheets Integration", "API Integration (Developer)", "Outgoing Webhooks", "Zapier Integration",
-      "Pabbly Integration", "Make Integration", "N8N Integration", "WooCommerce Integration", "Shopify Integration",
     ],
   },
   {
     name: "Growth",
-    price: { usd: 15, inr: 1499 },
+    price: 4899,
     badge: "Most popular",
     contacts: "5,000 Contacts",
     highlight: "For growing businesses that need more contacts, appointment flows, AI routing, and support.",
@@ -108,12 +97,12 @@ const plans = [
       "Includes all Starter features", "5,000 Contacts", "5 Team Members", "Omnichannel Inbox: WhatsApp",
       "Appointment Booking System", "High Speed Broadcasting", "Unlimited AI Message Tokens",
       "AI Intent Detection", "Roles and Permissions", "Manager Monitoring", "Incoming Chat Translation",
-      "Webhook Integration", "Custom Webhook Listener", "Remove \"Powered by RevSathi\"", "On-Call Support",
+      "Webhook Access for Integrations", "Custom Webhook Listener", "Remove \"Powered by RevSathi\"", "On-Call Support",
     ],
   },
   {
     name: "Scale",
-    price: { usd: 25, inr: 2499 },
+    price: 12999,
     badge: "High volume",
     contacts: "10,000 Contacts",
     highlight: "For teams scaling campaigns, automations, inbox operations, and AI-led conversion.",
@@ -164,15 +153,12 @@ function PricingNav() {
   );
 }
 
-function PlanCard({ plan, billing, currency }) {
+function PlanCard({ plan, billing }) {
   const annual = billing === "annual";
-  const basePrice = plan.price == null ? null : plan.price[currency];
-  const monthlyPrice = basePrice == null ? null : basePrice * (annual ? 0.85 : 1);
-  const annualTotal = basePrice == null ? null : basePrice * 12 * 0.85;
-  const money = {
-    usd: { symbol: "$", code: "USD", decimals: 2 },
-    inr: { symbol: "₹", code: "INR", decimals: 0 },
-  }[currency];
+  const basePrice = plan.price;
+  const monthlyPrice = basePrice == null ? null : basePrice * (annual ? 0.75 : 1);
+  const annualTotal = basePrice == null ? null : basePrice * 12 * 0.75;
+  const money = { symbol: "₹", code: "INR", decimals: 0 };
   const formatPrice = (value) => {
     if (value == null) return "";
     return value.toLocaleString("en-US", {
@@ -199,7 +185,7 @@ function PlanCard({ plan, billing, currency }) {
         )}
       </div>
       <div className="rp-plan__note">
-        {annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at ${money.symbol}${formatPrice(annualTotal)} ${money.code}. You save 15%.` : `Monthly billing in ${money.code}. Switch to annual to save 15%.`}
+        {annualTotal == null ? "Flexible pricing for larger teams and subscriber needs." : annual ? `Billed annually at ${money.symbol}${formatPrice(annualTotal)} ${money.code}. You save 25%.` : `Monthly billing in ${money.code}. Switch to annual to save 25%.`}
       </div>
       <a href="https://app.revsathi.com/signup" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? "btn-primary" : "btn-outline-dark"}`}>Get Started <PriceIcon name="arrow" size={16}/></a>
       <div className="rp-plan__features">
@@ -216,11 +202,10 @@ function PlanCard({ plan, billing, currency }) {
 
 function PricingPage() {
   const [billing, setBilling] = useState("monthly");
-  const [currency, setCurrency] = useState("usd");
   const categories = [
     { icon: "wallet", title: "Zero markup promise", text: "RevSathi keeps platform pricing transparent. You pay your plan plus official WhatsApp costs, without hidden conversation commission." },
     { icon: "bot", title: "AI that works inside WhatsApp", text: "Use AI for replies, lead qualification, intent detection, translations, handoff summaries, and follow-up sequences." },
-    { icon: "plug", title: "Built for your stack", text: "Connect Google Sheets, APIs, webhooks, Zapier, Pabbly, Make, n8n, WooCommerce, and Shopify." },
+    { icon: "plug", title: "Built for your stack", text: "Growth and higher plans include webhook access for connecting RevSathi with your systems and workflows." },
   ];
 
   const comparison = [
@@ -229,6 +214,7 @@ function PricingPage() {
     ["AI tokens", "50,000", "Unlimited", "Unlimited", "Custom volume"],
     ["WhatsApp numbers", "1", "1", "Multiple", "More numbers"],
     ["Branding removal", "-", "Included", "Included", "Included"],
+    ["Integrations", "-", "Webhook access", "Webhook access", "Webhook access"],
     ["Support", "Standard", "On-call", "Priority", "Dedicated manager"],
   ];
 
@@ -241,7 +227,7 @@ function PricingPage() {
             <div className="rp-hero__copy">
               <div className="rp-kicker"><PriceIcon name="shield" size={14}/> Fair, transparent WhatsApp pricing</div>
               <h1>Zero markup fees. Serious WhatsApp automation. Simple RevSathi plans.</h1>
-              <p>Choose the contact limit and team capacity you need today. Every plan is built around official WhatsApp automation, AI conversations, shared inbox workflows, broadcasts, chatbot flows, and integrations that help customers understand value quickly.</p>
+              <p>Choose the contact limit and team capacity you need today. Every plan is built around official WhatsApp automation, AI conversations, shared inbox workflows, broadcasts, and chatbot flows, with webhook integration access from Growth onward.</p>
               <div className="rp-hero__actions">
                 <a href="#plans" className="btn btn-primary">View Plans <PriceIcon name="arrow" size={16}/></a>
                 <a href="https://swiy.co/demochat" target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">Watch Demo</a>
@@ -250,14 +236,14 @@ function PricingPage() {
             <div className="rp-hero__panel">
               <div className="rp-save-card">
                 <div className="rp-save-card__label">Annual savings</div>
-                <div className="rp-save-card__num">15%</div>
+                <div className="rp-save-card__num">25%</div>
                 <p>Pick annual billing to reduce your monthly equivalent price while keeping the same features.</p>
               </div>
               <div className="rp-metric-grid">
                 <div><strong>0%</strong><span>Markup fees</span></div>
                 <div><strong>24/7</strong><span>AI replies</span></div>
                 <div><strong>500-15k</strong><span>Contacts</span></div>
-                <div><strong>10+</strong><span>Integrations</span></div>
+                <div><strong>Growth+</strong><span>Webhook access</span></div>
               </div>
             </div>
           </div>
@@ -281,21 +267,17 @@ function PricingPage() {
               <div>
                 <div className="rp-kicker"><PriceIcon name="layers" size={14}/> Plans</div>
                 <h2>Pick the plan that matches your contact volume.</h2>
-                <p>All paid plans include the core RevSathi platform: official WhatsApp automation, inbox, broadcasts, templates, chatbot builder, AI workflows, and integrations.</p>
+                <p>All paid plans include the core RevSathi platform: official WhatsApp automation, inbox, broadcasts, templates, chatbot builder, and AI workflows. Growth and higher plans add webhook access for integrations.</p>
               </div>
               <div className="rp-toggle-stack">
-                <div className="rp-billing" role="group" aria-label="Currency">
-                  <button className={currency === "usd" ? "active" : ""} onClick={() => setCurrency("usd")}>USD</button>
-                  <button className={currency === "inr" ? "active" : ""} onClick={() => setCurrency("inr")}>INR</button>
-                </div>
                 <div className="rp-billing" role="group" aria-label="Billing period">
                   <button className={billing === "monthly" ? "active" : ""} onClick={() => setBilling("monthly")}>Monthly</button>
-                  <button className={billing === "annual" ? "active" : ""} onClick={() => setBilling("annual")}>Annual <span>Save 15%</span></button>
+                  <button className={billing === "annual" ? "active" : ""} onClick={() => setBilling("annual")}>Annual <span>Save 25%</span></button>
                 </div>
               </div>
             </div>
             <div className="rp-plan-grid">
-              {plans.map((plan) => <PlanCard key={plan.name} plan={plan} billing={billing} currency={currency}/>)}
+              {plans.map((plan) => <PlanCard key={plan.name} plan={plan} billing={billing}/>)}
             </div>
           </div>
         </section>
